@@ -10,18 +10,55 @@ Template Version 8.2 DE. (basiert auf AsciiDoc Version), Januar 2023
 Created, maintained and © by Dr. Peter Hruschka, Dr. Gernot Starke and
 contributors. Siehe <https://arc42.org>.
 
-# Einführung und Ziele
+# 1. Einführung und Ziele
 
-## Aufgabenstellung
+## 1.1 Aufgabenstellung
+Im Rahmen des Moduls *Web Programming Lab* soll ein individuelles Softwareprojekt umgesetzt werden.  
+Der geplante Aufwand beträgt ca. **60 Stunden** und umfasst Implementierung, Dokumentation und Präsentation.  
 
-## Qualitätsziele
+Es gibt zwei mögliche Projektvarianten:
 
-## Stakeholder
+- **Technologie-Radar (vorgegebenes Thema, empfohlen)**  
+  Ein webbasiertes Tool zur Erfassung, Visualisierung und Bewertung von Technologien in Form eines Radars (Quadranten, Ringe, Bewegungen über die Zeit).  
 
-| Rolle        | Kontakt        | Erwartungshaltung |
-|--------------|----------------|-------------------|
-| *\<Rolle-1>* | *\<Kontakt-1>* | *\<Erwartung-1>*  |
-| *\<Rolle-2>* | *\<Kontakt-2>* | *\<Erwartung-2>*  |
+- **Eigenes Projektthema (Alternative, nach Absprache)**  
+  Dazu wäre eine einseitige Projektskizze einzureichen mit  
+  - **Kontextbeschreibung** (3–5 Sätze)  
+  - **User Stories** (MoSCoW-Priorisierung)  
+  - **geplanter Tech-Stack**
+
+### Abgabevorbereitung (bei Projektwahl)
+- Bei Wahl *Technologie-Radar*: Einreichung des geplanten **Tech-Stacks** sowie evtl. **Scope-Anpassungen**.  
+- Bei Wahl *eigenes Projekt*: Abgabe einer Projektskizze (s. o.).
+
+---
+
+## 1.2 Ziele
+- Umsetzung einer lauffähigen Webanwendung, die die Projektanforderungen erfüllt  
+- Dokumentation der Softwarearchitektur (empfohlen: arc42, Fokus auf Kapitel 4–10)  
+- Reflexion über Vorgehen, Herausforderungen und Lernerfahrungen  
+- Erstellung eines Arbeitsprotokolls (Datum, Stunden, Tätigkeiten)  
+- Durchführung einer 5-minütigen Projektpräsentation (inkl. Folien oder vergleichbarer Artefakte)
+
+---
+
+## 1.3 Nicht-Ziele
+- Entwicklung einer vollständigen, produktionsreifen Plattform  
+- Abdeckung aller möglichen Features eines Technologie-Radars  
+- Einsatz komplexer Infrastruktur (z. B. Kubernetes, Multi-Cloud-Deployments), sofern nicht notwendig für den Projektrahmen  
+
+---
+
+## 1.4 Stakeholder
+- **Dominik Witschard**  
+  Erwartet nachvollziehbare Ergebnisse, eine saubere Dokumentation sowie eine kurze, prägnante Präsentation  
+
+- **Sven Brunner**  
+  Verantwortlich für Planung, Umsetzung, Dokumentation und Präsentation des Projekts  
+
+- **Fiktive Endnutzer:innen (nur konzeptionell)**  
+  Sollten das Technologie-Radar intuitiv bedienen können, um Technologien zu erfassen und deren Entwicklung im Zeitverlauf nachzuvollziehen
+
 
 # Randbedingungen
 
