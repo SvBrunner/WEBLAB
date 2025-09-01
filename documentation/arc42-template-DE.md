@@ -60,7 +60,34 @@ Es gibt zwei mögliche Projektvarianten:
   Sollten das Technologie-Radar intuitiv bedienen können, um Technologien zu erfassen und deren Entwicklung im Zeitverlauf nachzuvollziehen
 
 
-# Randbedingungen
+# 2. Randbedingungen
+
+## 2.1 Fachliche Randbedingungen
+- **Einzelarbeit:** Das Projekt wird von einer einzelnen Person (Sven Brunner) umgesetzt.  
+- **Zeitbudget:** ca. 60 Stunden inkl. Implementierung, Dokumentation und Präsentation.  
+- **Projektwahl:** Umsetzung eines **Technologie-Radars** mit Angular-Frontend.  
+- **Abgabeformate:** Architekturdokumentation (arc42), Reflexion & Arbeitsprotokoll, Software-Artefakte (Git-Repository), Präsentationsartefakte.
+
+## 2.2 Organisatorische Randbedingungen
+- **Betreuung:** durch den Dozenten Dominik Witschard.  
+- **Arbeitsweise:** Entwicklung, Tests und Betrieb erfolgen lokal (Entwickler-Notebook) in Docker-Containern.  
+- **Keine Cloud-Abhängigkeit:** Keine PaaS/IaaS, keine externen Managed Services.
+
+## 2.3 Technische Randbedingungen
+- **Programmiersprache:** TypeScript (JS/TS).  
+- **Frontend:** Angular (Material, Tailwind, ngx-echarts).  
+- **Backend:** NestJS (Node 20+), REST-API.  
+- **Persistenz:** PostgreSQL (Prisma ORM).  
+- **Authentifizierung:** lokal optional (JWT) oder OIDC gegen lokalen/externen Provider; Cloud-Auth (z. B. Auth0) ist **nicht erforderlich**.  
+- **Laufzeit/Infra:** **Docker** (lokal), Orchestrierung via **docker compose**.  
+- **Artefakte/Binaries:** Container-Images für `web` (Angular/NGINX), `api` (NestJS), `db` (Postgres), `adminer` (DB-UI).  
+- **Ports (default):** Web `:8080`, API `:3000`, Adminer `:8081`, Postgres `:5432`.
+
+## 2.4 Qualitäts- und Prozessrandbedingungen
+- **Dokumentation:** arc42-Template.  
+- **Versionskontrolle:** GitHub (öffentlich).  
+- **Build & Tests:** lokal per npm-Scripts (Jest, Angular Testing Library); optional lokale Git-Hooks.  
+- **Reproduzierbarkeit:** `docker compose up` bringt das System lokal lauffähig hoch (inkl. DB-Schema-Migration).
 
 # Kontextabgrenzung
 
