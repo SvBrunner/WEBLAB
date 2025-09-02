@@ -13,81 +13,53 @@ contributors. Siehe <https://arc42.org>.
 # 1. Einführung und Ziele
 
 ## 1.1 Aufgabenstellung
-Im Rahmen des Moduls *Web Programming Lab* soll ein individuelles Softwareprojekt umgesetzt werden.  
-Der geplante Aufwand beträgt ca. **60 Stunden** und umfasst Implementierung, Dokumentation und Präsentation.  
+Im Rahmen des Moduls *Web Programming Lab* wird ein individuelles Softwareprojekt umgesetzt.  
+Geplant ist die Realisierung eines **Technologie-Radars** als Webanwendung.
 
-Es gibt zwei mögliche Projektvarianten:
-
-- **Technologie-Radar (vorgegebenes Thema, empfohlen)**  
-  Ein webbasiertes Tool zur Erfassung, Visualisierung und Bewertung von Technologien in Form eines Radars (Quadranten, Ringe, Bewegungen über die Zeit).  
-
-- **Eigenes Projektthema (Alternative, nach Absprache)**  
-  Dazu wäre eine einseitige Projektskizze einzureichen mit  
-  - **Kontextbeschreibung** (3–5 Sätze)  
-  - **User Stories** (MoSCoW-Priorisierung)  
-  - **geplanter Tech-Stack**
-
-### Abgabevorbereitung (bei Projektwahl)
-- Bei Wahl *Technologie-Radar*: Einreichung des geplanten **Tech-Stacks** sowie evtl. **Scope-Anpassungen**.  
-- Bei Wahl *eigenes Projekt*: Abgabe einer Projektskizze (s. o.).
-
----
+Der Radar dient dazu, Technologien zu erfassen, in Kategorien und Reifegrade einzuordnen und für Nutzer sichtbar zu machen.  
+Es sollen zentrale Basisfunktionalitäten wie Verwaltung (Administration) und Anzeige (Viewer) realisiert werden.
 
 ## 1.2 Ziele
-- Umsetzung einer lauffähigen Webanwendung, die die Projektanforderungen erfüllt  
-- Dokumentation der Softwarearchitektur (empfohlen: arc42, Fokus auf Kapitel 4–10)  
-- Reflexion über Vorgehen, Herausforderungen und Lernerfahrungen  
-- Erstellung eines Arbeitsprotokolls (Datum, Stunden, Tätigkeiten)  
-- Durchführung einer 5-minütigen Projektpräsentation (inkl. Folien oder vergleichbarer Artefakte)
-
----
+- Entwicklung einer lauffähigen Webanwendung (Radar-Administration und Radar-Viewer)
+- Einfache, nachvollziehbare Architektur
+- Dokumentation nach arc42 (Fokus auf Kapitel 4–10)
+- Reflexion über Vorgehen und Lernerfahrungen
+- Kurze Projektpräsentation
 
 ## 1.3 Nicht-Ziele
-- Entwicklung einer vollständigen, produktionsreifen Plattform  
-- Abdeckung aller möglichen Features eines Technologie-Radars  
-- Einsatz komplexer Infrastruktur (z. B. Kubernetes, Multi-Cloud-Deployments), sofern nicht notwendig für den Projektrahmen  
-
----
+- Keine vollständige, produktionsreife Plattform
+- Keine komplexe Infrastruktur (Cloud, Kubernetes etc.)
+- Keine vollständige Abbildung aller möglichen Features eines Technologie-Radars
 
 ## 1.4 Stakeholder
-- **Dominik Witschard**  
-  Erwartet nachvollziehbare Ergebnisse, eine saubere Dokumentation sowie eine kurze, prägnante Präsentation  
+- **Dozent (Betreuung)** – erwartet klare Ergebnisse, Dokumentation und Präsentation
+- **Student (Umsetzung)** – verantwortlich für Planung, Implementierung und Reflexion
+- **Endnutzer:innen (fiktiv)** – sollen den Radar intuitiv nutzen können
 
-- **Sven Brunner**  
-  Verantwortlich für Planung, Umsetzung, Dokumentation und Präsentation des Projekts  
-
-- **Fiktive Endnutzer:innen (nur konzeptionell)**  
-  Sollten das Technologie-Radar intuitiv bedienen können, um Technologien zu erfassen und deren Entwicklung im Zeitverlauf nachzuvollziehen
-
+---
 
 # 2. Randbedingungen
 
 ## 2.1 Fachliche Randbedingungen
-- **Einzelarbeit:** Das Projekt wird von einer einzelnen Person (Sven Brunner) umgesetzt.  
-- **Zeitbudget:** ca. 60 Stunden inkl. Implementierung, Dokumentation und Präsentation.  
-- **Projektwahl:** Umsetzung eines **Technologie-Radars** mit Angular-Frontend.  
-- **Abgabeformate:** Architekturdokumentation (arc42), Reflexion & Arbeitsprotokoll, Software-Artefakte (Git-Repository), Präsentationsartefakte.
+- Projekt wird in **Einzelarbeit** durchgeführt
+- Zeitbudget: ca. **60 Stunden** inkl. Implementierung, Dokumentation, Präsentation
+- Umsetzung eines **Technologie-Radars**
 
 ## 2.2 Organisatorische Randbedingungen
-- **Betreuung:** durch den Dozenten Dominik Witschard.  
-- **Arbeitsweise:** Entwicklung, Tests und Betrieb erfolgen lokal (Entwickler-Notebook) in Docker-Containern.  
-- **Keine Cloud-Abhängigkeit:** Keine PaaS/IaaS, keine externen Managed Services.
+- Betreuung durch Dozent im Modul *Web Programming Lab*
+- Abgabe: Architekturdokumentation, Reflexion, Arbeitsjournal, Softwareartefakte, Präsentation
 
 ## 2.3 Technische Randbedingungen
-- **Programmiersprache:** TypeScript (JS/TS).  
-- **Frontend:** Angular (Material, Tailwind, ngx-echarts).  
-- **Backend:** NestJS (Node 20+), REST-API.  
-- **Persistenz:** PostgreSQL (Prisma ORM).  
-- **Authentifizierung:** lokal optional (JWT) oder OIDC gegen lokalen/externen Provider; Cloud-Auth (z. B. Auth0) ist **nicht erforderlich**.  
-- **Laufzeit/Infra:** **Docker** (lokal), Orchestrierung via **docker compose**.  
-- **Artefakte/Binaries:** Container-Images für `web` (Angular/NGINX), `api` (NestJS), `db` (Postgres), `adminer` (DB-UI).  
-- **Ports (default):** Web `:8080`, API `:3000`, Adminer `:8081`, Postgres `:5432`.
+- **Frontend:** Angular
+- **Backend:** NestJS
+- **Persistenz:** Datenbank noch offen
+- **Entwicklung:** lokal, ggf. Container-basiert
 
 ## 2.4 Qualitäts- und Prozessrandbedingungen
-- **Dokumentation:** arc42-Template.  
-- **Versionskontrolle:** GitHub (öffentlich).  
-- **Build & Tests:** lokal per npm-Scripts (Jest, Angular Testing Library); optional lokale Git-Hooks.  
-- **Reproduzierbarkeit:** `docker compose up` bringt das System lokal lauffähig hoch (inkl. DB-Schema-Migration).
+- Strukturierte Dokumentation (arc42)
+- Versionskontrolle via Git
+- Lokale Builds & Tests
+- Ergebnis muss reproduzierbar lauffähig sein
 
 # Kontextabgrenzung
 
