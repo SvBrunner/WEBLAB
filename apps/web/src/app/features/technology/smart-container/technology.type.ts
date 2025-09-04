@@ -1,7 +1,10 @@
 export interface Technology {
+  uuid: string | null
   name: string
   description: string
   ring: Ring
+  category: Category
+  published: boolean
 }
 
 export const Ring = {
@@ -11,7 +14,15 @@ export const Ring = {
   HOLD: "Hold"
 
 } as const;
-
 export type Ring = typeof Ring[keyof typeof Ring];
+
+export const Category = {
+  TOOLS: "Tools",
+  TECHNIQUES: "Techniques",
+  PLATFORMS: "Platforms",
+  LANGUAGES_FRAMEWORKS: "Languages & Frameworks"
+} as const;
+export type Category = typeof Category[keyof typeof Category];
+
 
 

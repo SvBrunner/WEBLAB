@@ -1,18 +1,24 @@
 import {Routes} from '@angular/router';
-import {Home} from '../pages/home/home';
 import {NotFound} from '../pages/NotFound';
 import {Techradar} from '../pages/techradar/techradar';
+import {TechOverview} from '../pages/techmanagement/tech-overview.component';
+import {TechEditComponent} from '../pages/techmanagement/tech-edit.component';
 
 export const routes: Routes = [
   {
     path: '',
-    title: 'Home Page',
-    component: Home,
-  },
-  {
-    path: 'techradar',
     title: 'Techradar',
     component: Techradar,
+  },
+  {
+    path: 'technologies',
+    title: 'Technology Management',
+    component: TechOverview
+  },
+  {
+    path: 'technologies/:id',
+    title: 'Edit Technology',
+    component: TechEditComponent
   },
   {
     path: '**',

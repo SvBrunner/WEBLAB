@@ -1,14 +1,15 @@
-import {Component} from '@angular/core';
-import {CreateTechReactive} from '../../features/technology/smart-container/create-tech-reactive';
+import {Component, forwardRef} from '@angular/core';
+import {CreateNewTechnology} from '../../features/technology/smart-container/create-new-technology';
+import {ListTech} from '../../features/technology/smart-container/list-tech';
 
 @Component({
   selector: 'app-user',
   template: `
-    <h1>Create Tech Reactive</h1>
-    <create-tech-reactive/>
+    <h1>Techradar</h1>
+    <list-tech/>
   `,
   imports: [
-    CreateTechReactive
+    ListTech
   ],
 })
 export class Techradar {
