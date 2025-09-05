@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class TechService {
 
-  url = 'http://localhost:3000/technologies';
+  url = 'http://localhost:3000/api/v1/technologies';
 
   constructor(private httpClient: HttpClient) {
   }

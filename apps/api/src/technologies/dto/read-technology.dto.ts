@@ -1,8 +1,8 @@
-import { Ring } from './ring';
-import { Category } from './category';
+import { Ring } from '../entities/ring';
+import { Category } from '../entities/category';
 
-export class Technology {
-  uuid: string;
+export class ReadTechnologyDto {
+  id: string;
   name: string;
   description: string;
   ring: Ring;
@@ -15,7 +15,7 @@ export class Technology {
     ring: Ring,
     category: Category,
   ) {
-    this.uuid = uuid;
+    this.id = uuid;
     this.name = name;
     this.description = description;
     this.ring = ring;
