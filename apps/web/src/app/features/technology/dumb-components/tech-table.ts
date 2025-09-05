@@ -44,8 +44,7 @@ import {RouterLink} from '@angular/router';
             </td>
             <td class="has-text-right">
               <div class="buttons are-small is-right">
-                <a [routerLink]="['technologies', tech.uuid]" class="button is-info is-light"
-                   (click)="onEditClick(tech)"
+                <a [routerLink]="['/technologies', 'edit',tech.uuid]" class="button is-info is-light"
                    aria-label="Edit {{ tech.name }}">
                   Edit
                 </a>
@@ -66,12 +65,7 @@ import {RouterLink} from '@angular/router';
 export class TechTable {
   technologies = input.required<Technology[]>();
 
-  onEdit = output<Technology>()
   onDelete = output<Technology>()
-
-  onEditClick(tech: Technology) {
-    this.onEdit.emit(tech);
-  }
 
   onDeleteClick(tech: Technology) {
     this.onDelete.emit(tech);

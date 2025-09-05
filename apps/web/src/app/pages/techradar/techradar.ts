@@ -6,7 +6,6 @@ import {ListTech} from '../../features/technology/smart-container/list-tech';
   selector: 'app-user',
   template: `
     <h1>Techradar</h1>
-    <list-tech/>
   `,
   imports: [
     ListTech

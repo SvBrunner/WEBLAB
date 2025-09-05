@@ -1,15 +1,23 @@
 import {Component} from '@angular/core';
-import {CreateNewTechnology} from '../../features/technology/smart-container/create-new-technology';
+import {ListTech} from '../../features/technology/smart-container/list-tech';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-tech-overview',
   template: `
-    <h1>Management</h1>
-    <create-new-technology/>
+    <section class="section">
 
+      <h1 class="title">Management</h1>
+
+      <div class="has-text-right">
+        <a class="button is-primary" routerLink="/technologies/add">Create</a>
+      </div>
+      <list-tech/>
+    </section>
   `,
   imports: [
-    CreateNewTechnology
+    ListTech,
+    RouterLink
   ],
 })
 export class TechOverview {

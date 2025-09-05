@@ -1,4 +1,4 @@
-import {Component, inject, input, output} from '@angular/core';
+import {Component, effect, inject, input, output} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Category, Ring, Technology} from '../smart-container/technology.type';
 
@@ -73,26 +73,46 @@ import {Category, Ring, Technology} from '../smart-container/technology.type';
   `,
 })
 export class TechForm {
-  private formBuilder: FormBuilder = inject(FormBuilder);
+  private fb = inject(FormBuilder);
+
   RING_VALUES = Object.values(Ring) as readonly Ring[];
   CATEGORY_VALUES = Object.values(Category) as readonly Category[];
-  technology = input<Partial<Technology>>();
-  techForm = this.formBuilder.group(
-    {
-      name: [this.technology()?.name, [Validators.required, Validators.maxLength(20)]],
-      description: [this.technology()?.description, [Validators.required, Validators.maxLength(200)]],
-      ring: [this.technology()?.ring],
-      category: [this.technology()?.category],
-      published: [this.technology()?.published]
-    }
-  );
 
+  // Optional input; make it `input.required<Partial<Technology>>()` if the parent always provides it.
+  technology = input<Partial<Technology> | null>(null);
+
+  // Tip: use nonNullable to avoid undefined creeping in.
+  techForm = this.fb.nonNullable.group({
+    name: ['', [Validators.required, Validators.maxLength(20)]],
+    description: ['', [Validators.required, Validators.maxLength(200)]],
+    ring: this.fb.control<Ring | null>(null),
+    category: this.fb.control<Category | null>(null),
+    published: false,
+  });
+
+  // 🔁 React to late/changed input values
+  // Runs at least once; patches whenever `technology()` changes.
+  private _syncFromInput = effect(() => {
+    const tech = this.technology();
+    if (!tech) return;
+
+    this.techForm.patchValue({
+      name: tech.name ?? '',
+      description: tech.description ?? '',
+      ring: tech.ring ?? null,
+      category: tech.category ?? null,
+      published: tech.published ?? false,
+    });
+
+    // Optional: reset pristine/untouched when swapping records (e.g., editing a different item)
+    this.techForm.markAsPristine();
+    this.techForm.markAsUntouched();
+  });
+
+  onFormSubmitted = output<Technology>();
 
   onSubmit() {
-
-    this.onFormSubmitted.emit(this.techForm.value as Technology)
+    if (this.techForm.invalid) return;
+    this.onFormSubmitted.emit(this.techForm.getRawValue() as Technology);
   }
-
-  onFormSubmitted = output<Technology>()
-  protected readonly Object = Object;
 }

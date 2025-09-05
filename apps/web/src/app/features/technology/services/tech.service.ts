@@ -18,8 +18,16 @@ export class TechService {
     return this.httpClient.get<Technology[]>(this.url)
   }
 
-  addTechnology(tech: Technology) {
+  getTechnology(uuid: string): Observable<Technology> {
+    return this.httpClient.get<Technology>(`${this.url}/${uuid}`)
+  }
 
-    console.log(`Create new  ${tech}`)
+  addTechnology(tech: Technology): Observable<Object> {
+    return this.httpClient.post(this.url, tech);
+  }
+
+  updateTechnology(tech: Technology) {
+    console.log(`Update existing`)
+    console.log(tech)
   }
 }
