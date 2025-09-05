@@ -26,7 +26,11 @@ export class TechService {
     return this.httpClient.post(this.url, tech);
   }
 
-  updateTechnology(tech: Technology) {
+  updateTechnology(tech: Technology): Observable<Object> {
     return this.httpClient.put(this.url, tech);
+  }
+
+  deleteTechnology(id: string): Observable<Object> {
+    return this.httpClient.delete(`${this.url}/${id}`);
   }
 }
