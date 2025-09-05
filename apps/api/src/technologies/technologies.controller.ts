@@ -14,11 +14,13 @@ import { ReadTechnologyDto } from './dto/read-technology.dto';
 import { CreateTechnologyDto } from './dto/create-technology.dto';
 import { Technology } from './entities/technology.entity';
 import { UpdateTechnologyDto } from './dto/update-technology.dto';
+import { Public } from '../auth/public.decorator';
 
 @Controller('technologies')
 export class TechnologiesController {
   constructor(private readonly technologiesService: TechnologiesService) {}
 
+  @Public()
   @Get()
   async getAllTechnologies(): Promise<ReadTechnologyDto[]> {
     const entities = await this.technologiesService.getTechnologies();
