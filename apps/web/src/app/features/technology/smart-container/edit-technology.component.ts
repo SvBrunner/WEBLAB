@@ -2,6 +2,7 @@ import {Component, inject, input, OnInit, signal} from '@angular/core';
 import {Technology} from './technology.type';
 import {TechForm} from '../dumb-components/tech-form';
 import {TechService} from '../services/tech.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit-technology',
@@ -14,7 +15,6 @@ import {TechService} from '../services/tech.service';
 })
 export class EditTechnology implements OnInit {
   tech = signal<Partial<Technology>>({})
-
   id = input.required<string>();
 
   ngOnInit(): void {
@@ -22,10 +22,13 @@ export class EditTechnology implements OnInit {
   }
 
   private techService: TechService = inject(TechService)
+  private location: Location = inject(Location);
 
   onFormSubmitted(tech: Technology) {
-    console.log(tech);
-    this.techService.addTechnology(tech);
+    tech.id = this.id();
+    this.techService.updateTechnology(tech).subscribe(() => {
+      this.location.back();
+    });
   }
 }
 

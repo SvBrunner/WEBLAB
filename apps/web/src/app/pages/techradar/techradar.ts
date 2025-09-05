@@ -1,5 +1,4 @@
 import {Component, forwardRef} from '@angular/core';
-import {CreateNewTechnology} from '../../features/technology/smart-container/create-new-technology';
 import {ListTech} from '../../features/technology/smart-container/list-tech';
 
 @Component({
@@ -7,9 +6,7 @@ import {ListTech} from '../../features/technology/smart-container/list-tech';
   template: `
     <h1>Techradar</h1>
   `,
-  imports: [
-    ListTech
-  ],
+  imports: [],
 })
 export class Techradar {
 

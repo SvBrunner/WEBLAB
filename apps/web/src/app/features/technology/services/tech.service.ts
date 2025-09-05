@@ -27,7 +27,6 @@ export class TechService {
   }
 
   updateTechnology(tech: Technology) {
-    console.log(`Update existing`)
-    console.log(tech)
+    return this.httpClient.put(this.url, tech);
   }
 }

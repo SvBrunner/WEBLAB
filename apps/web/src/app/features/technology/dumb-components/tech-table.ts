@@ -44,7 +44,7 @@ import {RouterLink} from '@angular/router';
             </td>
             <td class="has-text-right">
               <div class="buttons are-small is-right">
-                <a [routerLink]="['/technologies', 'edit',tech.uuid]" class="button is-info is-light"
+                <a [routerLink]="['/technologies', 'edit',tech.id]" class="button is-info is-light"
                    aria-label="Edit {{ tech.name }}">
                   Edit
                 </a>

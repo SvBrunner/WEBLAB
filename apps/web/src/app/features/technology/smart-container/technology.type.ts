@@ -1,5 +1,5 @@
 export interface Technology {
-  uuid: string | null
+  id: string | null
   name: string
   description: string
   ring: Ring
