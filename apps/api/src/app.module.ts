@@ -6,6 +6,7 @@ import { TechnologiesModule } from './technologies/technologies.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { User } from './auth/entities/user.entity';
+import { CaslModule } from './casl/casl.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { User } from './auth/entities/user.entity';
     TechnologiesModule,
     AuthModule,
     UsersModule,
+    CaslModule,
   ],
 })
 export class AppModule {}

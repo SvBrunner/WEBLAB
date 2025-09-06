@@ -8,6 +8,7 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { TechnologiesService } from './technologies.service';
 import { ReadTechnologyDto } from './dto/read-technology.dto';
@@ -15,6 +16,10 @@ import { CreateTechnologyDto } from './dto/create-technology.dto';
 import { Technology } from './entities/technology.entity';
 import { UpdateTechnologyDto } from './dto/update-technology.dto';
 import { Public } from '../auth/public.decorator';
+import { CheckPolicies } from '../casl/check-policies.decorator';
+import { PoliciesGuard } from '../casl/policies.guard';
+import { AppAbility } from '../casl/casl-ability.factory';
+import { Action } from '../auth/entities/action.enum';
 
 @Controller('technologies')
 export class TechnologiesController {
@@ -39,6 +44,10 @@ export class TechnologiesController {
     }
   }
 
+  @UseGuards(PoliciesGuard)
+  @CheckPolicies((ability: AppAbility) =>
+    ability.can(Action.Delete, Technology),
+  )
   @Delete(':uuid')
   async deleteTechnology(
     @Param('uuid', new ParseUUIDPipe({ version: '4' })) uuid: string,

@@ -7,7 +7,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
-import { ConfigService } from '@nestjs/config';
+import { Role } from './entities/role.enum';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +16,6 @@ export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
-    private configService: ConfigService,
   ) {}
 
   async signIn(
@@ -29,7 +28,11 @@ export class AuthService {
       throw new UnauthorizedException();
     const result = await bcrypt.compare(pass, user.password);
     if (result) {
-      const payload = { sub: user.id, username: user.username };
+      const payload = {
+        sub: user.id,
+        username: user.username,
+        roles: user.roles,
+      };
       return {
         access_token: await this.jwtService.signAsync(payload),
       };
@@ -46,6 +49,7 @@ export class AuthService {
       const user = new User();
       user.username = username;
       user.password = hash;
+      user.roles = [Role.User];
       await this.usersService.createUser(user);
     });
   }

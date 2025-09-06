@@ -1,0 +1,15 @@
+meta {
+  name: Create Tech
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/technologies
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {"name":"Angular","description":"Dteadsa","ring":"Adopt","category":"Techniques","published":false}
+}
