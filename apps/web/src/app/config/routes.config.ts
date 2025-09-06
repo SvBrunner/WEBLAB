@@ -4,6 +4,7 @@ import {Techradar} from '../pages/techradar/techradar';
 import {TechOverview} from '../pages/techmanagement/tech-overview.component';
 import {TechEditComponent} from '../pages/techmanagement/tech-edit.component';
 import {TechAddComponent} from '../pages/techmanagement/tech-add.component';
+import {LoginComponent} from '../pages/auth/login.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,11 @@ export const routes: Routes = [
     path: 'technologies/add',
     title: 'Add Technology',
     component: TechAddComponent
+  },
+  {
+    path: 'login',
+    title: 'Login',
+    component: LoginComponent
   },
   {
     path: '**',
