@@ -1,0 +1,59 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-techradar}
+      MYSQL_USER: ${MYSQL_USER:-admin}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-admin}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u${MYSQL_USER:-admin}", "-p${MYSQL_PASSWORD:-admin}" ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: nest-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      JWT_SECRET: yourSuperSecretKeyHere
+      JWT_EXPIRATION: "3600"
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_USERNAME: admin
+      DB_PASSWORD: admin
+      DB_NAME: techradar
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      args:
+        API_BASE_URL: /api
+    container_name: angular-web
+    restart: unless-stopped
+    environment:
+      API_BASE_URL: "http://localhost:3000/api/v1"
+    ports:
+      - "8080:8080"   # open http://localhost:8080
+    depends_on:
+      - api
+
+volumes:
+  db_data:
