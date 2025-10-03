@@ -306,16 +306,13 @@ Dieses Kapitel beschreibt allgemeine Entwurfs- und Implementierungsprinzipien, d
 - Nutzung von **NestJS ConfigModule**, Werte über `.env` und Docker Compose gesetzt:
   - `JWT_SECRET`, `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`.
 
-## 8.6 Logging & Monitoring
-- Aktuell: Standard-Logger von NestJS.
-- Optionale Erweiterung für persistentes Logging oder Metriken (z. B. Winston, Prometheus).
 
-## 8.7 Frontend-Kommunikation
+## 8.6 Frontend-Kommunikation
 - Angular **HttpClient** kapselt API-Aufrufe.
 - `AuthService` und `TechService` übernehmen den Zugriff.
 - `API_BASE_URL` konfigurierbar über `window.__env` oder `environment.ts`.
 
-## 8.8 Sicherheit
+## 8.7 Sicherheit
 - Passwörter werden mit **bcrypt** gehasht gespeichert.
 - JWT-Secret aktuell in env gespeichert, sollte noch geprüft werden
 
